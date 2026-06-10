@@ -1,0 +1,37 @@
+
+
+const Button = ({
+  children,
+  onClick,
+  type = "button",
+  variant = "primary",
+  disabled = false,
+  className = "",
+  ...props
+}) => {
+  const baseStyle =
+    "inline-flex items-center justify-center px-6 py-3 font-semibold text-sm rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
+
+  const variants = {
+    primary:
+      "bg-purple-600 hover:bg-purple-500 text-white shadow-lg hover:shadow-purple-500/20 active:scale-98",
+    secondary:
+      "bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-850 text-zinc-100 active:scale-98",
+    danger:
+      "bg-red-600 hover:bg-red-500 text-white shadow-md active:scale-98"
+  };
+
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseStyle} ${variants[variant] || variants.primary} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
