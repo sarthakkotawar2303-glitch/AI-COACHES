@@ -14,7 +14,7 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-zinc-100 hover:bg-zinc-200 text-zinc-950 shadow active:scale-98",
+      "bg-purple-600 hover:bg-purple-700 text-white active:scale-98",
     secondary:
       "bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 text-zinc-100 active:scale-98",
     danger:

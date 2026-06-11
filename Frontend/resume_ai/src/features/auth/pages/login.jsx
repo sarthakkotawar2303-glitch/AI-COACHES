@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, LogIn, Eye, EyeOff, Zap } from 'lucide-react';
 
 const Login = () => {
     const { loading, handleLogin } = useAuth();
@@ -21,17 +21,11 @@ const Login = () => {
 
     if (loading) {
         return (
-            <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-950 text-zinc-300 relative overflow-hidden">
-                {/* Decorative glow orbs */}
-                <div className="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse"></div>
+            <main className="flex flex-col items-center justify-center min-h-screen bg-zinc-950 text-zinc-300">
                 <div className="relative z-10 flex flex-col items-center animate-fade-scale">
-                    <div className="relative w-20 h-20 mb-6 flex items-center justify-center">
-                        <div className="absolute inset-0 border-4 border-transparent border-t-purple-500 border-b-purple-500 rounded-full animate-spin duration-1000"></div>
-                        <div className="absolute inset-2 border-4 border-transparent border-l-indigo-400 border-r-indigo-400 rounded-full animate-spin duration-700 reverse"></div>
-                        <div className="text-purple-400 text-xl font-bold animate-pulse">⚡</div>
-                    </div>
-                    <h2 className="text-lg font-extrabold text-zinc-100 tracking-wide animate-pulse">Authenticating</h2>
-                    <p className="text-xs text-zinc-500 mt-2">Connecting to secure servers...</p>
+                    <div className="w-10 h-10 border-2 border-zinc-800 border-t-purple-600 rounded-full animate-spin mb-6"></div>
+                    <h2 className="text-sm font-semibold text-zinc-100 tracking-wide">Authenticating...</h2>
+                    <p className="text-xs text-zinc-500 mt-1">Connecting to secure servers</p>
                 </div>
             </main>
         );
@@ -41,14 +35,9 @@ const Login = () => {
         <main className="flex min-h-screen bg-zinc-950 text-zinc-300 overflow-hidden">
             {/* Left Column: Intro Panel */}
             <div className="hidden md:flex md:w-1/2 relative flex-col items-center justify-center p-12 overflow-hidden bg-zinc-950 border-r border-zinc-900 animate-slide-left">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse duration-4000"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse duration-3000"></div>
-
                 <div className="relative z-10 max-w-md space-y-6 text-left">
                     <div className="flex items-center gap-3 animate-fade-down">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                            ⚡
-                        </div>
+                        <Zap size={24} className="text-purple-500" />
                         <span className="text-2xl font-extrabold text-zinc-100 tracking-tight">AI COACHES</span>
                     </div>
                     <h2 className="text-3xl font-extrabold text-zinc-100 tracking-tight leading-tight opacity-0 animate-fade-up delay-100">
@@ -62,8 +51,6 @@ const Login = () => {
 
             {/* Right Column: Form Panel */}
             <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-12 relative overflow-hidden bg-zinc-950 animate-slide-right">
-                <div className="absolute md:hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-500/5 rounded-full blur-[100px] pointer-events-none"></div>
-
                 <div className="w-full max-w-md z-10 space-y-8">
                     <div className="space-y-6">
                         
@@ -74,7 +61,7 @@ const Login = () => {
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {error && (
-                                <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs text-center opacity-0 animate-fade-up">
+                                <div className="p-3 bg-red-950 border border-red-900 text-red-400 rounded-xl text-xs text-center opacity-0 animate-fade-up">
                                     {error}
                                 </div>
                             )}
@@ -89,7 +76,7 @@ const Login = () => {
                                             placeholder="Email Address" 
                                             name="email" 
                                             id="email"
-                                            className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20 hover:border-zinc-700 transition-all duration-200"
+                                            className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 hover:border-zinc-700 transition-all duration-200"
                                             required
                                         />
                                     </div>
@@ -105,7 +92,7 @@ const Login = () => {
                                             placeholder="Password" 
                                             name="password" 
                                             id="password"
-                                            className="w-full pl-11 pr-11 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20 hover:border-zinc-700 transition-all duration-200"
+                                            className="w-full pl-11 pr-11 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 hover:border-zinc-700 transition-all duration-200"
                                             required
                                         />
                                         <button
@@ -128,7 +115,7 @@ const Login = () => {
                             <div className="opacity-0 animate-fade-up delay-300">
                                 <button 
                                     type="submit" 
-                                    className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm rounded-xl hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500/40 flex items-center justify-center gap-2"
+                                    className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-600 flex items-center justify-center gap-2"
                                 >
                                     <LogIn size={14} /> Sign In
                                 </button>

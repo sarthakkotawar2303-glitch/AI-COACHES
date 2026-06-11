@@ -83,7 +83,7 @@ const AnalysisForm = ({ onSubmit, onBack, reportList, onSelectReport }) => {
             <button
               type="submit"
               disabled={!resumeFile || !jobDescription || !selfDescription}
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-zinc-100 hover:bg-zinc-200 disabled:bg-zinc-800 disabled:opacity-50 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-purple-600 hover:bg-purple-700 disabled:bg-zinc-800 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
             >
               <Zap size={14} /> Generate Guide
             </button>

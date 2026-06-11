@@ -15,7 +15,7 @@ const DashboardView = ({ averageReadiness, reportsCount, reports, onStartNew, on
           <div className="pt-4">
             <button
               onClick={onStartNew}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-100 hover:bg-zinc-200 active:bg-zinc-300 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 active:bg-purple-800 text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
             >
               <Plus size={14} /> Start New Analysis
             </button>

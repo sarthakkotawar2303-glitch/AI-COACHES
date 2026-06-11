@@ -17,7 +17,7 @@ const TechnicalPrepPanel = ({ questions = [] }) => {
             <div
               key={idx}
               className={`bg-zinc-900/30 border rounded-xl overflow-hidden transition-all duration-200 ${
-                isOpen ? "border-zinc-700 bg-zinc-900/40" : "border-zinc-800 hover:border-zinc-700"
+                isOpen ? "border-purple-500 bg-zinc-900" : "border-zinc-800 hover:border-zinc-700"
               }`}
             >
               <div
@@ -25,7 +25,7 @@ const TechnicalPrepPanel = ({ questions = [] }) => {
                 className="flex justify-between items-center p-4 cursor-pointer hover:bg-zinc-900/20 transition-all"
               >
                 <div className="flex gap-2.5 items-start pr-2 text-left">
-                  <span className="text-xs font-mono font-bold text-zinc-400 shrink-0 pt-0.5">
+                  <span className="text-xs font-mono font-bold text-purple-400 shrink-0 pt-0.5">
                     Q{idx + 1}.
                   </span>
                   <span className="text-xs sm:text-sm font-semibold text-zinc-200 leading-relaxed">
@@ -39,8 +39,8 @@ const TechnicalPrepPanel = ({ questions = [] }) => {
 
               {isOpen && (
                 <div className="p-5 border-t border-zinc-800 space-y-4 text-xs sm:text-sm leading-relaxed bg-zinc-950/40 text-left">
-                  <div className="p-3.5 bg-zinc-900/50 border-l-2 border-zinc-600 rounded-r-lg">
-                    <p className="font-bold text-zinc-400 uppercase tracking-wider text-[9px] font-mono">
+                  <div className="p-3.5 bg-zinc-900 border-l-2 border-purple-500 rounded-r-lg">
+                    <p className="font-bold text-purple-400 uppercase tracking-wider text-[9px] font-mono">
                       Assessment Objective
                     </p>
                     <p className="text-zinc-300 mt-1 italic">{q.intension}</p>

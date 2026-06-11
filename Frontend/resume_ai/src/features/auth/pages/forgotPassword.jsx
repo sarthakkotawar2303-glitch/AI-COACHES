@@ -14,7 +14,7 @@ const ForgotPassword = () => {
         setLoading(true);
         setMessage("");
         setError("");
-        
+
         const res = await forgotPassword(email);
         if (res.success) {
             setMessage("A password reset link has been sent to your email.");
@@ -45,11 +45,11 @@ const ForgotPassword = () => {
                     <div className="flex flex-col text-left">
                         <div className="relative">
                             <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 transition-colors group-focus-within:text-purple-400" size={16} />
-                            <input 
-                                type="email" 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                value={email} 
-                                placeholder="Email Address" 
+                            <input
+                                type="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                                placeholder="Email Address"
                                 required
                                 className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20 hover:border-zinc-700 transition-all duration-200"
                             />
@@ -57,15 +57,15 @@ const ForgotPassword = () => {
                     </div>
 
                     <div className="pt-2">
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             disabled={loading}
                             className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-bold text-sm rounded-xl hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
                         >
                             {loading ? "Sending..." : <><Send size={14} /> Send Reset Link</>}
                         </button>
                     </div>
-                    
+
                     <div className="flex justify-center pt-2">
                         <Link to="/login" className="text-xs text-zinc-500 hover:text-zinc-300 font-semibold transition-all flex items-center gap-1">
                             <ArrowLeft size={12} /> Back to Login

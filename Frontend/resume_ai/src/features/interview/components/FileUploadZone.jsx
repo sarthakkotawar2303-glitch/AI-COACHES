@@ -55,7 +55,7 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
         onClick={() => fileInputRef.current?.click()}
         className={`flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 min-h-[160px] ${
           dragActive
-            ? "border-zinc-500 bg-zinc-900/40"
+            ? "border-purple-500 bg-zinc-900"
             : "border-zinc-800 bg-zinc-950 hover:border-zinc-700 hover:bg-zinc-900/10"
         }`}
       >
@@ -79,7 +79,7 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
           </div>
         ) : (
           <div
-            className="flex items-center justify-between w-full max-w-md p-3.5 bg-zinc-900 border border-zinc-800 rounded-xl shadow-md"
+            className="flex items-center justify-between w-full max-w-md p-3.5 bg-zinc-900 border border-purple-900/60 rounded-xl shadow-md"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3">

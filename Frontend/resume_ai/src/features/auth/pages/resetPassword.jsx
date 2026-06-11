@@ -42,13 +42,10 @@ const ResetPassword = () => {
     };
 
     return (
-        <main className="flex min-h-screen bg-zinc-950 text-zinc-300 overflow-hidden items-center justify-center p-6 relative">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse duration-4000"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse duration-3000"></div>
-
-            <div className="w-full max-w-md z-10 space-y-8 bg-zinc-900/30 p-8 rounded-2xl border border-zinc-800 backdrop-blur-xl">
+        <main className="flex min-h-screen bg-zinc-950 text-zinc-350 overflow-hidden items-center justify-center p-6 relative">
+            <div className="w-full max-w-md z-10 space-y-8 bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
                 <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center border border-purple-500/20 mb-2">
+                    <div className="w-12 h-12 bg-zinc-950 rounded-full flex items-center justify-center border border-zinc-800 mb-2">
                         <Lock className="text-purple-400" size={24} />
                     </div>
                     <h1 className="text-2xl font-extrabold text-zinc-100 tracking-tight">Reset Password</h1>
@@ -56,8 +53,8 @@ const ResetPassword = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {message && <div className="p-3 bg-green-500/10 border border-green-500/20 text-green-400 rounded-xl text-xs text-center flex items-center justify-center gap-2"><CheckCircle size={14} />{message}</div>}
-                    {error && <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs text-center">{error}</div>}
+                    {message && <div className="p-3 bg-green-950 border border-green-900 text-green-400 rounded-xl text-xs text-center flex items-center justify-center gap-2"><CheckCircle size={14} />{message}</div>}
+                    {error && <div className="p-3 bg-red-950 border border-red-900 text-red-400 rounded-xl text-xs text-center">{error}</div>}
 
                     <div className="flex flex-col text-left space-y-4">
                         <div className="relative">
@@ -68,7 +65,7 @@ const ResetPassword = () => {
                                 value={password} 
                                 placeholder="New Password" 
                                 required
-                                className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20 hover:border-zinc-700 transition-all duration-200"
+                                className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 hover:border-zinc-700 transition-all duration-200"
                             />
                         </div>
                         <div className="relative">
@@ -79,7 +76,7 @@ const ResetPassword = () => {
                                 value={confirmPassword} 
                                 placeholder="Confirm New Password" 
                                 required
-                                className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/20 hover:border-zinc-700 transition-all duration-200"
+                                className="w-full pl-11 pr-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 rounded-xl text-sm placeholder:text-zinc-600 focus:outline-none focus:border-purple-500 hover:border-zinc-700 transition-all duration-200"
                             />
                         </div>
                     </div>
@@ -88,7 +85,7 @@ const ResetPassword = () => {
                         <button 
                             type="submit" 
                             disabled={loading || !!message}
-                            className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-bold text-sm rounded-xl hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                            className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
                         >
                             {loading ? "Resetting..." : "Reset Password"}
                         </button>
