@@ -17,18 +17,18 @@ const BehavioralPrepPanel = ({ questions = [] }) => {
             <div
               key={idx}
               className={`bg-zinc-900/30 border rounded-xl overflow-hidden transition-all duration-200 ${
-                isOpen ? "border-indigo-500/60 shadow-lg shadow-indigo-500/5 bg-zinc-900/40" : "border-zinc-800 hover:border-zinc-700"
+                isOpen ? "border-zinc-700 bg-zinc-900/40" : "border-zinc-800 hover:border-zinc-700"
               }`}
             >
               <div
                 onClick={() => setExpandedId(isOpen ? null : id)}
                 className="flex justify-between items-center p-4 cursor-pointer hover:bg-zinc-900/20 transition-all"
               >
-                <div className="flex gap-3 items-start pr-2 text-left">
-                  <span className="text-[10px] font-bold tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-1 border border-indigo-500/15 rounded font-mono shrink-0">
-                    B{idx + 1}
+                <div className="flex gap-2.5 items-start pr-2 text-left">
+                  <span className="text-xs font-mono font-bold text-zinc-400 shrink-0 pt-0.5">
+                    B{idx + 1}.
                   </span>
-                  <span className="text-xs sm:text-sm font-bold text-zinc-205 leading-relaxed">
+                  <span className="text-xs sm:text-sm font-semibold text-zinc-200 leading-relaxed">
                     {q.question}
                   </span>
                 </div>
@@ -38,9 +38,9 @@ const BehavioralPrepPanel = ({ questions = [] }) => {
               </div>
 
               {isOpen && (
-                <div className="p-5 border-t border-zinc-850/60 space-y-4 text-xs sm:text-sm leading-relaxed bg-zinc-950/40 text-left">
-                  <div className="p-3.5 bg-indigo-500/5 border-l-2 border-indigo-500 rounded-r-lg">
-                    <p className="font-bold text-indigo-400 uppercase tracking-wider text-[9px] font-mono">
+                <div className="p-5 border-t border-zinc-800 space-y-4 text-xs sm:text-sm leading-relaxed bg-zinc-950/40 text-left">
+                  <div className="p-3.5 bg-zinc-900/50 border-l-2 border-zinc-600 rounded-r-lg">
+                    <p className="font-bold text-zinc-400 uppercase tracking-wider text-[9px] font-mono">
                       Soft Skill Objective
                     </p>
                     <p className="text-zinc-300 mt-1 italic">{q.intension}</p>

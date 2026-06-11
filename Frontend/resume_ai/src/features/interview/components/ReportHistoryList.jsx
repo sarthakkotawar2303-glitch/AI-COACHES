@@ -1,4 +1,4 @@
-
+import { FolderOpen } from "lucide-react";
 
 const ReportHistoryList = ({ reports = [], onSelectReport }) => {
   const formatDate = (dateStr) => {
@@ -11,11 +11,6 @@ const ReportHistoryList = ({ reports = [], onSelectReport }) => {
     });
   };
 
-  const getScoreColorClasses = (score) => {
-    if (score >= 80) return "border-emerald-500/30 text-emerald-400 bg-emerald-500/5";
-    if (score >= 50) return "border-amber-500/30 text-amber-400 bg-amber-500/5";
-    return "border-red-500/30 text-red-400 bg-red-500/5";
-  };
 
   return (
     <div className="bg-zinc-900/30 backdrop-blur-xl border border-zinc-800/60 rounded-2xl p-5 shadow-xl w-full">
@@ -32,7 +27,7 @@ const ReportHistoryList = ({ reports = [], onSelectReport }) => {
             <div
               key={item._id}
               onClick={() => onSelectReport(item._id)}
-              className="flex justify-between items-center p-3 bg-zinc-950/40 border border-zinc-800 rounded-xl cursor-pointer hover:border-purple-500/40 hover:bg-zinc-900/20 transition-all duration-200 shadow-sm"
+              className="flex justify-between items-center p-3 bg-zinc-950/40 border border-zinc-800 rounded-xl cursor-pointer hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 shadow-sm"
             >
               <div className="flex flex-col gap-0.5 overflow-hidden text-left pr-2">
                 <span className="text-xs sm:text-sm font-bold text-zinc-200 truncate">
@@ -44,9 +39,9 @@ const ReportHistoryList = ({ reports = [], onSelectReport }) => {
               </div>
               
               <span
-                className={`text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-md border ${getScoreColorClasses(
-                  item.matchScore
-                )}`}
+                className={`text-xs font-mono font-bold shrink-0 ${
+                  item.matchScore >= 80 ? "text-emerald-400" : item.matchScore >= 50 ? "text-amber-400" : "text-red-400"
+                }`}
               >
                 {item.matchScore}%
               </span>
@@ -55,7 +50,7 @@ const ReportHistoryList = ({ reports = [], onSelectReport }) => {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center p-8 border border-dashed border-zinc-800 rounded-xl bg-zinc-950/20 text-center">
-          <span className="text-2xl mb-1.5 opacity-60">📁</span>
+          <FolderOpen size={24} className="text-zinc-600 mb-1.5" />
           <p className="text-xs font-bold text-zinc-400">No past reports found</p>
           <p className="text-[10px] text-zinc-600 mt-0.5">
             Your generated guides will appear here

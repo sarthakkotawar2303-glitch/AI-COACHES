@@ -1,5 +1,7 @@
 
 
+import { CheckCircle2 } from "lucide-react";
+
 const SkillGapsPanel = ({ gaps = [] }) => {
   return (
     <div className="space-y-4">
@@ -33,7 +35,7 @@ const SkillGapsPanel = ({ gaps = [] }) => {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center p-8 border border-dashed border-emerald-500/20 rounded-xl bg-emerald-500/5 text-emerald-400 text-center max-w-md mx-auto">
-          <span className="text-3xl mb-2">🎉</span>
+          <CheckCircle2 size={32} className="text-emerald-500 mb-2" />
           <p className="text-xs font-bold">Alignment Matches Cleanly!</p>
           <p className="text-[10px] text-emerald-500/70 mt-1">
             Your qualifications cover the target requirements.

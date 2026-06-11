@@ -18,7 +18,7 @@ const TabNavigation = ({ activeTab, onTabChange }) => {
           onClick={() => onTabChange(tab.id)}
           className={`flex items-center gap-2 px-4 py-2.5 font-bold text-xs cursor-pointer border-b-2 transition-all shrink-0 ${
             activeTab === tab.id
-              ? "text-purple-400 border-purple-500"
+              ? "text-zinc-100 border-zinc-200"
               : "text-zinc-500 border-transparent hover:text-zinc-300"
           }`}
         >

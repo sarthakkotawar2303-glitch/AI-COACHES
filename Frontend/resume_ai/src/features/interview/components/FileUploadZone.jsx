@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { UploadCloud, FileText, X } from "lucide-react";
 
 const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
   const [dragActive, setDragActive] = useState(false);
@@ -54,7 +55,7 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
         onClick={() => fileInputRef.current?.click()}
         className={`flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 min-h-[160px] ${
           dragActive
-            ? "border-purple-500 bg-purple-500/5 shadow-md shadow-purple-500/10"
+            ? "border-zinc-500 bg-zinc-900/40"
             : "border-zinc-800 bg-zinc-950 hover:border-zinc-700 hover:bg-zinc-900/10"
         }`}
       >
@@ -67,8 +68,8 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
         />
 
         {!selectedFile ? (
-          <div className="text-center">
-            <div className="text-3xl mb-2 animate-bounce">📄</div>
+          <div className="text-center flex flex-col items-center justify-center">
+            <UploadCloud size={32} className="text-zinc-500 mb-2" />
             <p className="text-xs sm:text-sm font-semibold text-zinc-200">
               Drag & Drop Resume PDF here
             </p>
@@ -78,11 +79,11 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
           </div>
         ) : (
           <div
-            className="flex items-center justify-between w-full max-w-md p-3.5 bg-zinc-900/50 border border-purple-500/30 rounded-xl shadow-lg"
+            className="flex items-center justify-between w-full max-w-md p-3.5 bg-zinc-900 border border-zinc-800 rounded-xl shadow-md"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3">
-              <span className="text-2xl">📕</span>
+              <FileText size={20} className="text-zinc-400 shrink-0" />
               <div className="text-left max-w-[200px] sm:max-w-[280px]">
                 <p className="text-xs font-bold text-zinc-200 truncate">
                   {selectedFile.name}
@@ -99,10 +100,10 @@ const FileUploadZone = ({ selectedFile, onFileSelected, onFileRemoved }) => {
                 onFileRemoved();
                 if (fileInputRef.current) fileInputRef.current.value = "";
               }}
-              className="p-1.5 text-red-400 bg-red-400/10 rounded-full hover:bg-red-500 hover:text-white transition-all cursor-pointer text-xs"
+              className="p-1.5 text-red-400 bg-red-400/10 rounded-full hover:bg-red-500 hover:text-white transition-all cursor-pointer text-xs flex items-center justify-center"
               title="Remove file"
             >
-              ✕
+              <X size={12} />
             </button>
           </div>
         )}
