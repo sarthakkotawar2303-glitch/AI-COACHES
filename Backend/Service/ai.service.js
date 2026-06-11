@@ -82,27 +82,37 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
 
     Evaluate everything and fill out every single object key defined in the requested schema. Provide a deeply relevant day-by-day roadmap, specific targeted engineering/behavioral questions, and explicit answers.`;
 
-    try {
-        const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: prompt,
-            config: {
-                responseMimeType: "application/json",
-                // Pass our rock-solid native type configuration schema directly
-                responseSchema: nativeInterviewReportSchema,
-                temperature: 0.1 
+    const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
+    let lastError = null;
+
+    for (const model of models) {
+        try {
+            console.log(`Attempting report generation using model: ${model}...`);
+            const response = await ai.models.generateContent({
+                model: model,
+                contents: prompt,
+                config: {
+                    responseMimeType: "application/json",
+                    responseSchema: nativeInterviewReportSchema,
+                    temperature: 0.1 
+                }
+            });
+
+            if (!response.text) {
+                throw new Error("Gemini returned an empty response stream.");
             }
-        });
 
-        if (!response.text) {
-            throw new Error("Gemini returned an empty response stream.");
+            return JSON.parse(response.text);
+        } catch (error) {
+            lastError = error;
+            console.warn(`Failed generation with ${model}:`, error.message || error);
+            // Wait 1 second before trying next model
+            await new Promise((resolve) => setTimeout(resolve, 1000));
         }
-
-        return JSON.parse(response.text);
-    } catch (error) {
-        console.error("Gemini Generation Error:", error);
-        throw error;
     }
+
+    console.error("All Gemini models failed. Last Error:", lastError);
+    throw lastError;
 }
 
 module.exports = generateInterviewReport;
