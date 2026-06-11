@@ -22,9 +22,13 @@ connectDb();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const allowedOrigin = process.env.NODE_ENV === 'production' 
+    ? process.env.CLIENT_URL
+    : (process.env.CLIENT_URL || "http://localhost:5173");
+
 app.use(cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-    credentials:true
+    origin: allowedOrigin,
+    credentials: true
 }));
 
 //routes

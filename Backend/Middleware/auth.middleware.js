@@ -12,18 +12,18 @@ const Blacklist = require('../Model/blacklist.model');
 const authMiddleware = async (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.status(400).json({ message: "token is required" });
+        return res.status(401).json({ message: "token is required" });
     }
     try {
         const blacklistedToken = await Blacklist.findOne({ token })
         if (blacklistedToken) {
-            return res.status(400).json({ message: "token is blacklisted" });
+            return res.status(401).json({ message: "token is blacklisted" });
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         if (!decoded) {
-            return res.status(400).json({ message: "Invalid token" });
+            return res.status(401).json({ message: "Invalid token" });
         }
 
         req.user = decoded;
@@ -37,4 +37,32 @@ const authMiddleware = async (req, res, next) => {
     }
 }
 
-module.exports = { authMiddleware }
+/**
+ * @name Optional Auth Middleware
+ * @description Checks if the user is authenticated, but does not throw an error if not
+ * @async
+ * @access Public
+ */
+const optionalAuthMiddleware = async (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        req.user = null;
+        return next();
+    }
+    try {
+        const blacklistedToken = await Blacklist.findOne({ token })
+        if (blacklistedToken) {
+            req.user = null;
+            return next();
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        req.user = null;
+        next();
+    }
+}
+
+module.exports = { authMiddleware, optionalAuthMiddleware }

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useCallback } from "react"
 import InterviewContext from "../state/interviewContext"
 import { generateInterviewReport, interviewReports, interviewReportById } from "../services/interview.api"
 
@@ -11,7 +11,7 @@ export const useInterview = () => {
 
     const { loading, setLoading, report, setReport, reportList, setReportList } = context
 
-    const generateReport = async (jobDescription, resume, selfDescription) => {
+    const generateReport = useCallback(async (jobDescription, resume, selfDescription) => {
         try {
             setLoading(true)
             const response = await generateInterviewReport({ selfDescription, jobDescription, resumeFile: resume })
@@ -29,9 +29,9 @@ export const useInterview = () => {
         } finally {
             setLoading(false)
         }
-    }
+    }, [setLoading, setReport])
 
-    const getById = async (id) => {
+    const getById = useCallback(async (id) => {
         try {
             setLoading(true)
             const response = await interviewReportById(id)
@@ -50,9 +50,9 @@ export const useInterview = () => {
         } finally {
             setLoading(false)
         }
-    }
+    }, [setLoading, setReport])
 
-    const getReports = async () => {
+    const getReports = useCallback(async () => {
         try {
             setLoading(true)
             const response = await interviewReports()
@@ -71,7 +71,7 @@ export const useInterview = () => {
         } finally {
             setLoading(false)
         }
-    }
+    }, [setLoading, setReportList])
 
     return {
         generateReport,

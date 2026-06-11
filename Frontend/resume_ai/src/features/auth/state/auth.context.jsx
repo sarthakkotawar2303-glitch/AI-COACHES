@@ -14,7 +14,11 @@ export const AuthProvider = ({ children }) => {
             try {
                 const data = await GetMe();
                 if (data.success) {
-                    setUser(data.data.user || data.data);
+                    if (data.data.user !== undefined) {
+                        setUser(data.data.user);
+                    } else {
+                        setUser(data.data);
+                    }
                 }
             } catch (error) {
                 console.error("Auth check failed:", error);

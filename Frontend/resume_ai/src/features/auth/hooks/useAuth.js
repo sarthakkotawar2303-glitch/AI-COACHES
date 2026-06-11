@@ -75,12 +75,13 @@ export const useAuth = () => {
         setLoading(true)
         try {
             const data = await GetMe();
-            if (data.success) {
+            if (data.success && data.data.user) {
                 setUser(data.data.user)
                 setLoading(false)
                 navigate("/")
             }
             else {
+                setUser(null)
                 setLoading(false)
                 navigate("/login")
             }

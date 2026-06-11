@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000
         })
 
@@ -85,7 +85,7 @@ const loginUser = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000
         })
 
@@ -110,9 +110,12 @@ const logoutUser = async (req, res) => {
         const token = req.cookies.token;
         if (token) {
             await new Blacklist({ token }).save();
-
         }
-        res.clearCookie('token');
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'
+        });
         return res.status(200).json({ message: "User logged out successfully" });
 
     } catch (error) {
@@ -132,7 +135,13 @@ const logoutUser = async (req, res) => {
 
 const getMe = async (req, res) => {
     try {
+        if (!req.user) {
+            return res.status(200).json({ message: "Not authenticated", user: null });
+        }
         const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(200).json({ message: "User not found", user: null });
+        }
         res.status(200).json({ message: "User fetched successfully", user });
     } catch (error) {
         console.error("Error in fetching user:", error);
@@ -169,7 +178,8 @@ const forgotPassword = async (req, res) => {
         await user.save();
 
         // Create reset URL
-        const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+        const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+        const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
         const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please click on the link below to set a new password:\n\n${resetUrl}`;
 
         try {
