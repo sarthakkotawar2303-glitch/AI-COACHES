@@ -42,6 +42,20 @@ const Home = () => {
   const [loadingTipIndex, setLoadingTipIndex] = useState(0);
   const [viewMode, setViewMode] = useState("dashboard");
 
+  const getCleanErrorMessage = (err) => {
+    if (!err) return "Something went wrong while generating the report. Please try again.";
+    try {
+      const trimmed = err.trim();
+      if (trimmed.startsWith("{") && trimmed.endsWith("}")) {
+        const parsed = JSON.parse(trimmed);
+        return parsed.error?.message || parsed.message || err;
+      }
+    } catch (e) {
+      // ignore JSON parse error
+    }
+    return err;
+  };
+
   // Dynamic KPI Calculations
   const averageReadiness = reportList && reportList.length > 0
     ? Math.round(reportList.reduce((acc, curr) => acc + curr.matchScore, 0) / reportList.length)
@@ -405,17 +419,31 @@ const Home = () => {
 
         {/* Backend Generation Failure / Error State - Centered Card */}
         {status === "error" && (
-          <div className="flex flex-col items-center justify-center py-16 bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-2xl text-center shadow-2xl min-h-[420px] max-w-lg mx-auto px-6 animate-fade-scale">
-            <span className="text-4xl text-red-500 mb-3">⚠️</span>
-            <h2 className="text-xl font-extrabold text-red-500 tracking-tight mb-2">
-              Generation Failed
-            </h2>
-            <p className="text-sm text-zinc-400 max-w-md mb-6 leading-relaxed">
-              {errorMessage}
-            </p>
-            <Button variant="danger" onClick={handleReset} className="bg-red-650 hover:bg-red-600">
-              Try Again
-            </Button>
+          <div className="relative flex flex-col items-center justify-center py-16 bg-zinc-900/40 backdrop-blur-xl border border-red-500/20 rounded-2xl text-center shadow-2xl min-h-[420px] max-w-lg mx-auto px-8 overflow-hidden animate-fade-scale">
+            {/* Glowing background red orb */}
+            <div className="absolute w-80 h-80 bg-red-500/5 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+            
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="relative w-16 h-16 mb-6 flex items-center justify-center bg-red-500/10 border border-red-500/20 rounded-full animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                <span className="text-2xl text-red-400">⚠️</span>
+              </div>
+              
+              <h2 className="text-xl font-extrabold text-red-500 tracking-tight mb-3">
+                Generation Failed
+              </h2>
+              
+              <p className="text-xs sm:text-sm text-zinc-400 max-w-md mb-8 leading-relaxed">
+                {getCleanErrorMessage(errorMessage)}
+              </p>
+              
+              <button 
+                type="button" 
+                onClick={handleReset} 
+                className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-red-600/10 hover:shadow-red-500/25 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         )}
 
