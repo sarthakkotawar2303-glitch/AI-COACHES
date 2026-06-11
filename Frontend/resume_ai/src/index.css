@@ -98,3 +98,48 @@
   box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
 }
 
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.92);
+  }
+}
+
+@keyframes floatSlower {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-50px, 50px) scale(0.92);
+  }
+  66% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+}
+
+@keyframes panGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 44px 44px;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 20s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: floatSlower 25s ease-in-out infinite;
+}
+
+.animate-pan-grid {
+  animation: panGrid 24s linear infinite;
+}
+

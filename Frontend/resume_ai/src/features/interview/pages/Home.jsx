@@ -7,6 +7,7 @@ import { AlertTriangle } from "lucide-react";
 import Navbar from "../components/Navbar";
 import DashboardView from "../components/DashboardView";
 import AnalysisForm from "../components/AnalysisForm";
+import BackgroundGrid from "../../../components/Background/BackgroundGrid";
 
 const LOADING_TIPS = [
   "Uploading your resume securely...",
@@ -112,7 +113,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-zinc-950 text-zinc-300 antialiased font-sans">
+    <BackgroundGrid>
       <Navbar user={user} onLogout={handleLogout} onBrandClick={handleReset} />
 
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8">
@@ -167,7 +168,7 @@ const Home = () => {
           </div>
         )}
       </main>
-    </div>
+    </BackgroundGrid>
   );
 };
 
