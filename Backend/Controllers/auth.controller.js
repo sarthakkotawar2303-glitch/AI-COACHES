@@ -1,6 +1,5 @@
 const User = require("../Model/auth.model");
 const jwt = require("jsonwebtoken")
-const cookie = require('cookie-parser')
 const bcrypt = require('bcrypt');
 const Blacklist = require("../Model/blacklist.model");
 const crypto = require('crypto');

@@ -98,7 +98,7 @@ async function getInterviewReportsController(req, res) {
     try {
         const interviewReports = await interviewReportModel.find({ user: req.user.id })
             .sort({ createdAt: -1 })
-            .select("-resume -selfDescription -jobDescription -technicalQuestions -behavioralQuestions -skillGap -preparationPlan");
+            .select("-resume -selfDescription -jobDescription -technicalQuestions -behavioralQuestions -preparationPlan");
             
         return res.status(200).json({
             success: true,
