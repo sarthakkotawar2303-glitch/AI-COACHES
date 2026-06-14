@@ -11,7 +11,7 @@
 
 ---
 
-## Overview
+## <img src="https://api.iconify.design/lucide:lightbulb.svg?color=%238E75C2" width="22" height="22" align="center" /> Overview
 
 ### What is it?
 - A full-stack, AI-driven preparation cockpit that helps candidates evaluate their profile fit against target job roles.
@@ -33,17 +33,17 @@
 
 ---
 
-## Key Features
+## <img src="https://api.iconify.design/lucide:sparkles.svg?color=%238E75C2" width="22" height="22" align="center" /> Key Features
 
-- **🤖 Profile Alignment Analysis**: Automatically uploads and extracts raw text from PDF resumes to compute an instant match readiness score against job targets.
-- **📅 Dynamic Timelines**: Delivers an automated, day-wise study timeline explicitly tailored around identified profile deficiencies.
-- **🎯 Contextual Preparation**: Generates mock technical coding questions and behavioral response templates using the structured **STAR method**.
-- **🔒 Secure Authentication & Mailers**: Restricts dashboard access using custom JWT-based middleware, validates data schemas via **Zod**, and manages secure password resets through an asynchronous NodeMailer pipeline.
-- **🎨 Modern Dark UI**: Incorporates modern glassmorphism UI panels, harmonious color gradients, and animated loading components.
+- **<img src="https://api.iconify.design/lucide:bot.svg?color=%238E75C2" width="16" height="16" align="center" /> Profile Alignment Analysis**: Automatically uploads and extracts raw text from PDF resumes to compute an instant match readiness score against job targets.
+- **<img src="https://api.iconify.design/lucide:calendar.svg?color=%238E75C2" width="16" height="16" align="center" /> Dynamic Timelines**: Delivers an automated, day-wise study timeline explicitly tailored around identified profile deficiencies.
+- **<img src="https://api.iconify.design/lucide:target.svg?color=%238E75C2" width="16" height="16" align="center" /> Contextual Preparation**: Generates mock technical coding questions and behavioral response templates using the structured **STAR method**.
+- **<img src="https://api.iconify.design/lucide:lock.svg?color=%238E75C2" width="16" height="16" align="center" /> Secure Authentication & Mailers**: Restricts dashboard access using custom JWT-based middleware, validates data schemas via **Zod**, and manages secure password resets through an asynchronous NodeMailer pipeline.
+- **<img src="https://api.iconify.design/lucide:palette.svg?color=%238E75C2" width="16" height="16" align="center" /> Modern Dark UI**: Incorporates modern glassmorphism UI panels, harmonious color gradients, and animated loading components.
 
 ---
 
-## Tech Stack
+## <img src="https://api.iconify.design/lucide:cpu.svg?color=%238E75C2" width="22" height="22" align="center" /> Tech Stack
 
 ### Frontend
 - **Library**: [![React](https://img.shields.io/badge/React-19.0-61DAFB?style=flat-square&logo=react)](https://react.dev) Core UI Framework
@@ -65,7 +65,7 @@
 
 ---
 
-## Architecture Directory Structure
+## <img src="https://api.iconify.design/lucide:folder-tree.svg?color=%238E75C2" width="22" height="22" align="center" /> Architecture Directory Structure
 
 ```text
 ResumeBuilder/
@@ -88,7 +88,7 @@ ResumeBuilder/
 
 ---
 
-## Getting Started
+## <img src="https://api.iconify.design/lucide:rocket.svg?color=%238E75C2" width="22" height="22" align="center" /> Getting Started
 
 ### Prerequisites
 
@@ -163,7 +163,7 @@ EMAIL_PASS=your_email_app_password
 
 ---
 
-## Code Documentation Standard
+## <img src="https://api.iconify.design/lucide:file-text.svg?color=%238E75C2" width="22" height="22" align="center" /> Code Documentation Standard
 
 This codebase uses strict inline documentation practices. All public endpoints, validation middleware routes, and database abstraction layers are fully annotated utilizing **JSDoc parameters**.
 
@@ -182,6 +182,6 @@ Example of our method documentation standard:
 
 ---
 
-## License
+## <img src="https://api.iconify.design/lucide:scale.svg?color=%238E75C2" width="22" height="22" align="center" /> License
 
 Distributed under the MIT License. See `LICENSE` for more information.
