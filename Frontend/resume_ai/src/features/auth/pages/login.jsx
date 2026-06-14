@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { Mail, Lock, LogIn, Eye, EyeOff, Zap } from 'lucide-react';
 import BackgroundGrid from '../../../components/Background/BackgroundGrid';
+import Loading from '../../../components/Loader/Loading';
 
 const Login = () => {
     const { loading, handleLogin } = useAuth();
@@ -22,15 +23,11 @@ const Login = () => {
 
     if (loading) {
         return (
-            <BackgroundGrid>
-                <div className="flex-1 flex flex-col items-center justify-center text-zinc-300">
-                    <div className="relative z-10 flex flex-col items-center animate-fade-scale">
-                        <div className="w-10 h-10 border-2 border-zinc-800 border-t-purple-600 rounded-full animate-spin mb-6"></div>
-                        <h2 className="text-sm font-semibold text-zinc-100 tracking-wide">Authenticating...</h2>
-                        <p className="text-xs text-zinc-500 mt-1">Connecting to secure servers</p>
-                    </div>
-                </div>
-            </BackgroundGrid>
+            <Loading 
+                variant="fullscreen" 
+                title="Authenticating..." 
+                subtitle="Connecting to secure servers" 
+            />
         );
     }
 

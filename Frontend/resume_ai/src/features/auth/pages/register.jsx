@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { User, Mail, Lock, UserPlus, Eye, EyeOff, Zap } from 'lucide-react';
 import BackgroundGrid from '../../../components/Background/BackgroundGrid';
+import Loading from '../../../components/Loader/Loading';
 
 const Register = () => {
     const { loading, handleRegister } = useAuth();
@@ -18,15 +19,11 @@ const Register = () => {
 
     if (loading) {
         return (
-            <BackgroundGrid>
-                <div className="flex-1 flex flex-col items-center justify-center text-zinc-350">
-                    <div className="relative z-10 flex flex-col items-center animate-fade-scale">
-                        <div className="w-10 h-10 border-2 border-zinc-800 border-t-purple-600 rounded-full animate-spin mb-6"></div>
-                        <h2 className="text-sm font-extrabold text-zinc-100 tracking-wide">Creating Account</h2>
-                        <p className="text-xs text-zinc-500 mt-2">Setting up your profile...</p>
-                    </div>
-                </div>
-            </BackgroundGrid>
+            <Loading 
+                variant="fullscreen" 
+                title="Creating Account" 
+                subtitle="Setting up your profile..." 
+            />
         );
     }
 

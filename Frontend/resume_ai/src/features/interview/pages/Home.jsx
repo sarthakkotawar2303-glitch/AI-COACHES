@@ -8,6 +8,8 @@ import Navbar from "../components/Navbar";
 import DashboardView from "../components/DashboardView";
 import AnalysisForm from "../components/AnalysisForm";
 import BackgroundGrid from "../../../components/Background/BackgroundGrid";
+import Loading from "../../../components/Loader/Loading";
+
 
 const LOADING_TIPS = [
   "Uploading your resume securely...",
@@ -140,11 +142,11 @@ const Home = () => {
         )}
 
         {status === "loading" && (
-          <div className="flex flex-col items-center justify-center py-16 bg-zinc-900 border border-zinc-800 rounded-xl text-center shadow-md min-h-[380px] max-w-md mx-auto px-6 animate-fade-scale">
-            <div className="w-10 h-10 border-2 border-zinc-800 border-t-purple-600 rounded-full animate-spin mb-6"></div>
-            <h2 className="text-lg font-bold text-zinc-200 mb-2">Analyzing Profile Alignment</h2>
-            <p className="text-xs text-zinc-400 h-12 leading-relaxed max-w-xs">{LOADING_TIPS[loadingTipIndex]}</p>
-          </div>
+          <Loading
+            variant="card"
+            title="Analyzing Profile Alignment"
+            subtitle={LOADING_TIPS[loadingTipIndex]}
+          />
         )}
 
         {status === "error" && (

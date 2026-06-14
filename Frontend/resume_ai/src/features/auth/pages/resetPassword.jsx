@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Lock, CheckCircle, ArrowLeft } from 'lucide-react';
 import { resetPassword } from '../services/auth.api';
 import BackgroundGrid from '../../../components/Background/BackgroundGrid';
+import Loading from '../../../components/Loader/Loading';
 
 const ResetPassword = () => {
     const { token } = useParams();
@@ -87,9 +88,9 @@ const ResetPassword = () => {
                             <button 
                                 type="submit" 
                                 disabled={loading || !!message}
-                                className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                                className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
                             >
-                                {loading ? "Resetting..." : "Reset Password"}
+                                {loading ? <Loading variant="button" title="Resetting..." /> : "Reset Password"}
                             </button>
                         </div>
                         

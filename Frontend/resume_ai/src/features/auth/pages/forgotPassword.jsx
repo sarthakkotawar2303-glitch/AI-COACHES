@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, ArrowLeft, Send } from 'lucide-react';
 import { forgotPassword } from '../services/auth.api';
 import BackgroundGrid from '../../../components/Background/BackgroundGrid';
+import Loading from '../../../components/Loader/Loading';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
@@ -59,9 +60,9 @@ const ForgotPassword = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                                className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-xl active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
                             >
-                                {loading ? "Sending..." : <><Send size={14} /> Send Reset Link</>}
+                                {loading ? <Loading variant="button" title="Sending..." /> : <><Send size={14} /> Send Reset Link</>}
                             </button>
                         </div>
 
