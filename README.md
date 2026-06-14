@@ -1,58 +1,118 @@
-# AI-Powered Resume Builder
+# AI COACHES
 
-A full-stack web application designed to help users create, manage, and optimize their resumes using the power of Google Gemini AI.
+> An intelligent, production-ready preparation platform that parses resumes, analyzes target role alignment, and generates customized study roadmaps using Google Gemini AI.
 
-## 🌟 Features
+![License: MIT](https://shields.io)
+![Node.js Version](https://shields.io>=18.0.0-green?style=flat-square&logo=node.js)
+![React Version](https://shields.io)
+![MongoDB](https://shields.io)
 
-- **AI-Powered Resume Generation**: Leverage Google's Gemini AI (`@google/genai`) to generate professional resume content, summaries, and bullet points.
-- **User Authentication**: Secure signup, login, password reset, and forgot password functionality using JWT and `bcrypt`.
-- **Email Integration**: Automated emails for password resets and notifications using `nodemailer`.
-- **File Management**: Upload profile pictures and parse existing PDF resumes with `cloudinary`, `multer`, and `pdf-parse`.
-- **Modern User Interface**: Responsive and beautiful frontend built with React, Vite, and Tailwind CSS.
-- **RESTful API**: Robust backend built on Node.js, Express, and MongoDB.
+[🌐 Live Demo Link](https://your-live-demo-url.com) | [📽️ Video Walkthrough](https://your-video-link.com)
 
-## 💻 Tech Stack
+---
+
+## 💡 Overview
+
+### What is it?
+A full-stack, AI-driven preparation cockpit that helps candidates evaluate their profile fit against target job roles.
+
+### What problem does it solve?
+* **Application Mismatch:** Job applicants often fail to align their keywords and skills with target postings, leading to high automated rejection rates.
+* **Lack of Direction:** Candidates rarely have a personalized, structured study roadmap to address their role-specific technical and behavioral skill gaps.
+
+### Why was it built?
+To empower job seekers by instantly generating customized daily study plans, contextual technical questions, and structured behavioral prompt templates tailored to their exact profile gaps.
+
+---
+
+## ✨ Key Features
+
+* **🤖 Profile Alignment Analysis:** Automatically uploads and extracts raw text from PDF resumes to compute an instant match readiness score against job targets.
+* **📅 Dynamic Timelines:** Delivers an automated, day-wise study timeline explicitly tailored around identified profile deficiencies.
+* **🎯 Contextual Preparation:** Generates mock technical coding questions and behavioral response templates using the structured **STAR method**.
+* **🔒 Secure Authentication & Mailers:** Restricts dashboard access using custom JWT-based middleware, validates data schemas via **Zod**, and manages secure password resets through an asynchronous NodeMailer pipeline.
+* **🎨 Modern Dark UI:** Incorporates modern glassmorphism UI panels, harmonious color gradients, and animated loading components.
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: React 19 with Vite
-- **Styling**: Tailwind CSS & Sass
-- **Routing**: React Router v7
-- **Icons**: Lucide React
-- **API Client**: Axios
+* ![React](https://shields.io) Core UI Framework
+* ![Vite](https://shields.io) Fast Frontend Bundler
+* ![Tailwind CSS](https://shields.io) Utility-First Styling & Sass
+* ![React Router](https://shields.io) Declarative Routing
 
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: MongoDB with Mongoose
-- **AI Integration**: Google GenAI SDK
-- **Authentication**: JSON Web Tokens (JWT) & bcrypt
-- **File Uploads**: Multer & Cloudinary
-- **Emails**: Nodemailer
-- **Validation**: Zod
+### Backend & Core Services
+* ![Node.js](https://shields.ioRuntime-339933?style=flat-square&logo=node.js&logoColor=white) JavaScript Server Runtime
+* ![Express](https://shields.io) REST API Engine
+* ![Google Gemini](https://shields.io) Cognitive Parsing Engine (`@google/genai`)
+* ![MongoDB](https://shields.io) Persistent Storage via Mongoose ODM
+
+### Cloud Integrations & Utilities
+* **Storage:** Cloudinary & Multer (File upload pipeline)
+* **Parser:** pdf-parse (Text extraction)
+* **Email Engine:** Nodemailer
+* **Validation:** Zod Schema Validation
+
+---
+
+## 📂 Architecture Directory Structure
+
+```text
+ResumeBuilder/
+├── Backend/                 # Express backend API & models
+│   ├── config/              # Cloudinary, Database connections
+│   ├── controllers/         # Auth, AI analysis handlers
+│   ├── middleware/          # JWT auth validation gates
+│   ├── models/              # User, Report schema models
+│   └── routes/              # Express endpoint routers
+└── Frontend/
+    └── resume_ai/           # Vite React frontend SPA
+        ├── public/          # Static assets
+        └── src/
+            ├── components/  # Shared layouts, grids, loaders
+            ├── features/    # Modular functional domains
+            │   ├── auth/    # Login, signup, password resets
+            │   └── interview/# Reports, charts, timelines, file uploads
+            └── index.css    # Core design styles & transitions
+```
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher recommended)
-- MongoDB instance
-- Cloudinary account
-- Google Gemini API Key
 
-### Installation
+Ensure you have the following environments configured locally:
+* **Node.js**: Version 18.0 or higher
+* **MongoDB**: An active database instance (Local Daemon or MongoDB Atlas Cluster)
+* **Cloudinary Account**: For profile and document assets
+* **Google Gemini API Key**: Acquired via Google AI Studio
 
-1. **Clone the repository**
+### Setup and Installation
+
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/resume-builder.git
-   cd resume-builder
+   git clone https://github.com
+   cd ResumeBuilder
    ```
 
-2. **Setup the Backend**
+2. **Install Dependencies:**
+   Install the required packages for both sub-environments:
    ```bash
+   # Install backend dependencies
    cd Backend
    npm install
+
+   # Install frontend dependencies
+   cd ../Frontend/resume_ai
+   npm install
    ```
-   Create a `.env` file in the `Backend` directory and add your environment variables:
-   ```env
+
+3. **Configure Environment Variables:**
+   Create a `.env` file inside the `Backend/` directory:
+   ```bash
    PORT=3000
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
@@ -63,21 +123,39 @@ A full-stack web application designed to help users create, manage, and optimize
    EMAIL_USER=your_email@gmail.com
    EMAIL_PASS=your_email_app_password
    ```
-   Start the backend server:
+
+4. **Run the Application:**
+   Start the Backend server first:
    ```bash
+   cd Backend
    npm run dev
    ```
-
-3. **Setup the Frontend**
+   In a separate terminal instance, boot the Frontend interface:
    ```bash
-   cd ../Frontend/resume_ai
-   npm install
-   ```
-   Start the frontend development server:
-   ```bash
+   cd Frontend/resume_ai
    npm run dev
    ```
+   Open your environment browser and navigate to: `http://localhost:5173`
 
-## 📝 License
+---
 
-This project is licensed under the ISC License.
+## 📝 Code Documentation Standard
+
+This codebase uses strict inline documentation practices. All public endpoints, validation middleware routes, and database abstraction layers are fully annotated utilizing **JSDoc parameters**.
+
+Example of our method documentation standard:
+```javascript
+/**
+ * Express middleware to validate inbound JWT tokens.
+ * @param {Object} req - Inbound Express request object.
+ * @param {Object} res - Outbound Express response object.
+ * @param {Function} next - Express next middleware validation gate.
+ * @throws {UnauthorizedError} If authorization header is missing or token is invalid.
+ */
+```
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
