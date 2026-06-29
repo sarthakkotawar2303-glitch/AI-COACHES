@@ -6,8 +6,13 @@ import { Protected } from "./features/auth/components/protected";
 import InterviewReport from "./features/interview/pages/interviewReport";
 import ForgotPassword from "./features/auth/pages/forgotPassword";
 import ResetPassword from "./features/auth/pages/resetPassword";
+import Landing from "./features/landing/pages/Landing";
 
 const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Landing />
+    },
     {
         path: "/register",
         element: <Register />
@@ -25,7 +30,7 @@ const router = createBrowserRouter([
         element: <ResetPassword />
     },
     {
-        path: "/",
+        path: "/dashboard",
         element: <Protected>
             <Home />
         </Protected>
