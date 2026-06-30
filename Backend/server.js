@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
+const path = require('path');
+const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const cloudinary = require('cloudinary');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const connectDb = require('./Config/db');
 const authRoutes=require('./Routes/auth.routes');
 const cors=require('cors')
